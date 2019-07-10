@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Login from './components/Login';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends Component{
+  
+  render(){
+    return(
+    <div style={{width:"600px", margin:"10"}} className="App">
+      <form>
+      < Login/>
+      <div style={{alignSelf:"center"}} >
+      <p style={{color:"white"}} >Username</p>
+
+      <textarea
+        className="form-control"
+        placeholder={"Enter username"}
+      />
+
+      </div>
+      <div style={{alignSelf:"center"}} >
+      <p style={{color:"white"}} >Password</p>
+
+      <textarea
+        className="form-control"
+        placeholder={"Enter Password"}
+      />
+      </div>
+      <div>
+      <button style={{right:""}}>
+      Login
+      </button>
+
+      </div>
+      
+
+      </form>
     </div>
   );
 }
-
+}
 export default App;
