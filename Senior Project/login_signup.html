@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aggie Market</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="login_signup.css" rel="stylesheet" type="text/css" />
+    </head>
+    
+    <body>
+        <button class="tablink" onclick="openPage('Login', this, '#cccc00')" id="defaultOpen">Login</button>
+        <button class="tablink" onclick="openPage('Signup', this, '#cccc00')">Sign up</button>
+
+        <div id="Login" class="tabcontent ">
+            <h2>Welcome Back!</h2>
+            
+    <form id = "loginForm" action="homePage.html">
+        
+        <div class="imgcontainer">
+            <img src="aggie.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container" >
+            <label for="uname"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="uname" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit" id = "loginBtn">Login</button>
+        </div>
+        
+        <div class="container" style="background-color: #072a36" id = "cancelBox">
+            <input type="button" class="cancelbtn" onclick = "resetMe()" value = "Cancel">
+            <span class="psw"><a href="#">Forgot password?</a></span>
+        </div>
+        
+    </form>
+            
+
+        </div>
+        
+    <div id="Signup" class="tabcontent">
+        <h2>Please Sign-up</h2>
+        
+    <form id = "signupForm" action="action_page.php" style="border:none">
+        
+        <div class="imgcontainer">
+            <img src="aggie.png" alt="Avatar" class="avatar">
+        </div>
+        
+        <div class="container">
+
+            <p>Please fill in this form to create an account.</p>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+            
+            <button type="submit" class = "loginBtn">Sign Up</button>
+            
+            <label>
+                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+            </label>
+
+        </div>
+            
+        <div class="container" style="background-color: #072a36" id = "cancelBox">
+            <input type="button" class="cancelbtn" onclick = "resetMe()" value = "Cancel">
+        </div>
+            
+    </form>
+        
+    </div>
+       
+    <script src = "login_signup.js"> </script>
+   
+    </body>
+</html> 
+
