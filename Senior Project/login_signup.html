@@ -7,6 +7,9 @@
     </head>
     
     <body>
+        
+            
+        
         <button class="tablink" onclick="openPage('Login', this, '#cccc00')" id="defaultOpen">Login</button>
         <button class="tablink" onclick="openPage('Signup', this, '#cccc00')">Sign up</button>
 
@@ -20,12 +23,13 @@
         </div>
 
         <div class="container" >
+            <form action="login.php" method="POST">
             <label for="uname"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" name="uname" required>
 
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
-
+            </form>
             <button type="submit" id = "loginBtn">Login</button>
         </div>
         
@@ -42,14 +46,13 @@
     <div id="Signup" class="tabcontent">
         <h2>Please Sign-up</h2>
         
-    <form id = "signupForm" action="action_page.php" style="border:none">
+    <form id = "signupForm" action="Signup.php" style="border:none" method="POST">
         
         <div class="imgcontainer">
             <img src="aggie.png" alt="Avatar" class="avatar">
         </div>
         
         <div class="container">
-
             <p>Please fill in this form to create an account.</p>
 
             <label for="email"><b>Email</b></label>
