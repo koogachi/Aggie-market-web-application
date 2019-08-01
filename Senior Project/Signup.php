@@ -1,48 +1,52 @@
 <?php
 
 
-function rand(){
-	 return rand(950000004,959999999);
-}
-function used($x){
-	$CHECK = "SELECT userid from accounts Where userid = '$x' "
-	if($CHECK->num_rows ==0){
-		return $x;
-	}else{
-		rand();
-		used();
-	}
-}
-$unman=$_POST['email'];
+ ini_set("display_errors", "1");
+  error_reporting(E_ALL);
+
+
+$email=$_POST['email'];
 $psw=$_POST['psw'];
-$usid = rand();
-if(!empty($unman)||!empty($psw)||!empty($usid)){
+
+if(!empty($email)||!empty($psw) ) {
 	$host = "localhost";
 	$dbUsername = "root";
-	$dbPassword = "Wayne0409!";
-	$dbname = "Post_database";
+	$dbPassword = "root";
+	$dbname = "Aggie";
 
-
-	$conn = new mysql($host, $dbUsername,$dbPassword, $dbname);
-	if($conn->connection_error){
-		die('Connection Error('. $conn->connection_error.')');
+	$conn = new mysqli($host, $dbUsername,$dbPassword, $dbname);
+	if(mysqli_connect_error()){
+		die('Connection Error('. mysqli_connect_errno().')'. mysqli_connect_error());
 	}else{
-		$SELECT = "SELECT username form accounts Where username = ? Limit 1");
-		$INSERT = "INSERT Into accounts (username,password, userid) values(?,?,?)"
+		$SELECT = "SELECT email form accounts Where email = ? Limit 1";
+		$INSERT = "INSERT Into accounts (email, password) values(?, ?)";
 
-		$stmt = $conn->prepare($SELECT):
-		$stmt->bind_param("s",$unman);
+		$stmt = $conn->prepare($SELECT);
+		$stmt->bind_param("s",$email);
+		if ($stmt == false ){
+
+        throw new Exception("Error, could not process data submitted.");
+		}
 		$stmt->execute();
-		$stmt->bind_result($unman);
+		$stmt->bind_result($email);
+		if ($stmt == false ){
+			
+        throw new Exception("Error, could not process data submitted.");
+		}
 		$stmt->store_result();
+		$rnum = $stmt ->num_rows;
 
 		if($rnum==0){
 			$stmt->close();
 
 			$stmt = $conn->prepare(INSERT);
-			$stmt->bind_param("ssi",$unman, $psw, $usid);
+			$stmt->bind_param("ss",$email, $psw);
+			if ($stmt == false ){
+			
+        	throw new Exception("Error, could not process data submitted.");
+		}
 			$stmt->execute();
-			echo "New account was added"
+			echo "New account was added";
 		}
 	}
 }else{

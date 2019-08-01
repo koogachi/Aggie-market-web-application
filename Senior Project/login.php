@@ -5,8 +5,8 @@ $psw=$_POST['psw'];
 if(!empty($unman)||!empty($psw)){
 	$host = "localhost";
 	$dbUsername = "root";
-	$dbPassword = "Wayne0409!";
-	$dbname = "Post_database";
+	$dbPassword = "";
+	$dbname = "Aggie Market";
 
 
 	$conn = new mysql($host, $dbUsername,$dbPassword, $dbname);
